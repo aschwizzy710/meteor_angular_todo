@@ -37,6 +37,12 @@ export const Tasks = new Mongo.Collection('tasks');
   'tasks.remove' (taskId) {
     check(taskId, String);
 
+    const task = Tasks.findOne(taskId);
+
+    if ( task.private && task.owner !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
+
     Tasks.remove(taskId);
   },
   'tasks.setChecked' (taskId, setChecked) {
