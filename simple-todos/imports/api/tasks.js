@@ -39,7 +39,7 @@ export const Tasks = new Mongo.Collection('tasks');
 
     const task = Tasks.findOne(taskId);
 
-    if ( task.private && task.owner !== Meteor.userId()) {
+    if ( task.owner !== Meteor.userId()) {
       throw new Meteor.Error('not-authorized');
     }
 
