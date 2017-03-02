@@ -2,7 +2,6 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 import todosList from '../imports/components/todosList/todosList';
 
-
 angular.module ('simple-todos', [
   angularMeteor,
   todosList.name
@@ -17,5 +16,3 @@ if (Meteor.isCordova) {
   } else {
   angular.element(document).ready(onReady);
   }
-
-}
